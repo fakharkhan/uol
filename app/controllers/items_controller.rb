@@ -5,8 +5,13 @@ class ItemsController < ApplicationController
     if params[:category_id]
       @items = Item.joins(:category).where(:category_id =>  params[:category_id]).select("items.*")
     else
-      @items = Item.all
+      if params[:id]
+        @items = Item.find(params[:id])
+      else
+        @items = Item.all
+      end
     end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
