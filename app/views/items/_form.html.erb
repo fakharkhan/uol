@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :unit %><br />
-    <%= f.text_field :unit %>
+    <%= f.collection_select :unit_id, Unit.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.text_field :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :active %><br />

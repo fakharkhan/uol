@@ -2,8 +2,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
-
+    if params[:category_id]
+      @items = Item.joins(:category).where(:category_id =>  params[:category_id]).select("items.*")
+    else
+      @items = Item.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
