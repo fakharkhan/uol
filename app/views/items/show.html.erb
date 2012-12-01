@@ -19,7 +19,14 @@
   <b>Category:</b>
   <%= @item.category.name %>
 </p>
+<p>
+  <b>avatar:</b>
+  <%= image_tag @item.avatar.url(:thumb) %>
 
+
+</p>
+<b>Description:</b>
+<p><%= @item.description %></p>
 <p>
   <b>Active:</b>
   <%= @item.active %>

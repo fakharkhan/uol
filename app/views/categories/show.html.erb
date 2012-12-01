@@ -4,7 +4,10 @@
   <b>Name:</b>
   <%= @category.name %>
 </p>
-
+<p>
+  <b>Name:</b>
+  <%= image_tag @category.avatar.url(:thumb) %>
+</p>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

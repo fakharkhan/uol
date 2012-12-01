@@ -5,8 +5,7 @@ class CategoriesController < ApplicationController
       @categories = Category.all
      respond_to do |format|
       format.html # index.html.erb
-      format.xml { render xml: @categories }
-      format.json { render json: @categories }
+      format.json { render json:   @categories.to_json(:only=>[:id,:name,], :methods => [:avatar_url_thumb,:avatar_url_medium])}
     end
   end
 
@@ -18,7 +17,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render xml: @category }
-      format.json { render json: @category }
+      format.json { render json:   @category.to_json(:only=>[:id,:name,], :methods => [:avatar_url_thumb,:avatar_url_medium])}
     end
   end
 

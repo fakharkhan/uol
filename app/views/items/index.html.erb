@@ -19,6 +19,7 @@
     <td><%= item.unit.name  %></td>
     <td><%= item.category.name  %></td>
     <td><%= item.active %></td>
+    <td><%= image_tag item.avatar.url(:thumb) %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

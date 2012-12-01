@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @items }
+      format.json {render json:   @items.to_json(:only=>[:id,:name,:short_name,:description], :methods => [:avatar_url_thumb,:avatar_url_medium,:avatar_url_original])}
     end
   end
 
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @item }
+      format.json {render json:   @item.to_json(:only=>[:id,:name,:short_name,:description], :methods => [:avatar_url_thumb,:avatar_url_medium,:avatar_url_original])}
     end
   end
 
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
-
+    @item.active=true
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @item }
