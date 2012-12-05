@@ -1,13 +1,23 @@
 Uol::Application.routes.draw do
+  root :to => 'items#index'
+
+
+  devise_for :users,:path_names=>{:sign_in=>"login",:sign_up=>"register"}
+
   resources :items
-
   resources :units
-
   resources :categories
-
   resources :stores
 
-  # The priority is based upon order of creation:
+  resources :token_authentications, :only => [:create, :destroy]
+
+  namespace :api do
+    namespace :v1  do
+      resources :tokens, :only => [:create, :destroy]
+    end
+  end
+
+# The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
