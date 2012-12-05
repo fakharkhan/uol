@@ -2,7 +2,7 @@ Uol::Application.routes.draw do
   root :to => 'items#index'
 
 
-  devise_for :users,:path_names=>{:sign_in=>"login",:sign_up=>"register"}
+  devise_for :users,:path_names=>{:sign_in=>"login",:sign_up=>"signup"}
 
   resources :items
   resources :units
@@ -13,6 +13,7 @@ Uol::Application.routes.draw do
 
   namespace :api do
     namespace :v1  do
+      devise_for :users
       resources :tokens, :only => [:create, :destroy]
     end
   end
